@@ -92,7 +92,15 @@ class Player(pg.sprite.Sprite):
         self.reloading = 0
         self.origtop = self.rect.top
         self.facing = -1
-        
+        self.lives = 3
+
+    def update(self):
+        if self.lives <= 0:
+            pg.time.wait(1000)
+            pg.quit()
+
+    def kill(self):
+        self.lives -= 1
 
     def move(self, direction):
         if direction:
